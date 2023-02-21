@@ -4,17 +4,24 @@
     <meta charset="utf-8" />
     <title>Getting Started</title>
     <script src="https://unpkg.com/lodash@4.17.20"></script>
+    <link href = "../src/css/styles.css" rel = "stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300&display=swap" rel="stylesheet">
   </head>
   <body>
     <header>
       <a class="logoLink"></a>
-      <nav>
-        <a>Browse</a>
-        <a>My Products</a>
-        <a>Blog</a>
-        <a>Help</a>
+      <nav class="headNavigation">
+        <button class="showNavButton desktopHide">
+
+        </button>
+        <a href="#">Browse</a>
+        <a href="#">Blog</a>
+        <a href="#">Help</a>
         <a><ul class="userInfoList">
           <li><a href="#">Logout</a></li>
+          <li><a href="#"></a></li>
         </ul></a>
       </nav>
     </header>
@@ -23,19 +30,30 @@
 
     </section>
     <main>
+      <section class="navSection">
+          <nav>
+            <a href="#">All</a>
+            <a href="#"> My products</a>
+            <a href="#">Popular</a>
+          </nav>
+      </section>
     <section class="All">
       <h3>All Products</h3>
-      <ul >
+      <ul class="allProductList" >
 
       </ul>
     </section>
     <section class="My books">
       <h3>My Products</h3>
+      <ul class="myProductList">
+
+      </ul>
     </section>
     <section class="Blog">
 
     </section>
+    <button class="nextButton">Next page <span></span></button>
   </main>
-    <script src="bundle.js"></script>
+    <script src="bundle.js" ></script>
   </body>
 </html>
