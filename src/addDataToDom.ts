@@ -8,39 +8,52 @@ const addToDom = (data:{
     for(const product  in data){
         const li = document.createElement("li");
         const img = document.createElement("img");
-        img.src = data[product].image;
         const hx  = document.createElement("h3");
-        hx.textContent = `${data[product].title}`;
         const p:HTMLParagraphElement = document.createElement("p");
         const div = document.createElement('div');
         const secondP:HTMLParagraphElement = document.createElement("p");
-        secondP.textContent = `rate: ${data[product].rating.rate}`;
-        p.textContent = `${data[product].rating.count} reviews`;
         const hr = document.createElement("hr");
         const likesP = document.createElement('p');
-        likesP.innerHTML = `likes: <span>${data[product].likes}</span>`
+        const secondDiv = document.createElement('div');
         const likesButton = document.createElement('button');
+        const priceP = document.createElement('p');
+        const priceLikeDiv = document.createElement('div');
+        // manage elements text content
+
+        secondP.textContent = `rate: ${data[product].rating.rate}`;
+        p.textContent = `${data[product].rating.count} reviews`;
+        secondP.textContent = `rate: ${data[product].rating.rate}`;
+        p.textContent = `${data[product].rating.count} reviews`;
+        img.src = data[product].image;
+        priceLikeDiv.classList.add("priceLike");
+        hx.textContent = `${data[product].title}`;
+        secondDiv.classList.add("cardDataContainer")
+        div.classList.add("ratingDataContainer")
+        hx.classList.add("cardTitle")
+        priceP.classList.add("priceP");
+        likesP.textContent = `${data[product].likes}`
         likesButton.addEventListener("click",()=>{
             const span = Number(likesP.lastChild.textContent);
             generateLikes({
                 item_id:data[product].id
             })
-            likesP.innerHTML = `likes: <span>${span+1}</span>`
+            likesP.innerHTML = `<span>${span+1}</span>`
         })
-        const priceP = document.createElement('p');
-        priceP.textContent = `Coast ${data[product].price}`
-        likesButton.textContent = "Like"
+        likesButton.classList.add('likesButton');
+        likesP.classList.add("likesAmount")
+        priceP.textContent = `${data[product].price}$`
         div.appendChild(p);
         div.appendChild(secondP);
         li.appendChild(img);
-        li.appendChild(hx);
-        li.appendChild(div);
-        li.appendChild(hr)
-        li.appendChild(likesP)
-        li.appendChild(likesButton)
+        li.appendChild(secondDiv)
+        secondDiv.appendChild(hx);
+        secondDiv.appendChild(div);
+        secondDiv.appendChild(hr);
+        priceLikeDiv.appendChild(priceP);
+        priceLikeDiv.appendChild(likesButton);
+        secondDiv.appendChild(priceLikeDiv);
+        secondDiv.appendChild(likesP)
         productList.appendChild(li);
-
-
     }
 };
 

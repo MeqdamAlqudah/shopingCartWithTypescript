@@ -2,6 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Getting Started</title>
     <script src="https://unpkg.com/lodash@4.17.20"></script>
     <link href = "../src/css/styles.css" rel = "stylesheet"/>
@@ -11,48 +13,52 @@
   </head>
   <body>
     <header>
-      <a class="logoLink"></a>
+      <a class="logoLink"><span></span><span>Nuemba</span></a>
       <nav class="headNavigation">
         <button class="showNavButton desktopHide">
-
         </button>
-        <a href="#">Browse</a>
-        <a href="#">Blog</a>
-        <a href="#">Help</a>
-        <a><ul class="userInfoList">
-          <li><a href="#">Logout</a></li>
-          <li><a href="#"></a></li>
-        </ul></a>
+        <a href="#" class="normalNav navLink">Browse</a>
+        <a href="#" class="normalNav navLink">Blog</a>
+        <a href="#" class="normalNav navLink">Help</a>
+        <a href="#" class="userinfoControl normalNav navLink">Profile</a>
+          <ul class="userInfoList">
+          <li><a href="#" class="userInfoItem">Logout</a></li>
+          <li><a href="#" class="userInfoItem">Edit Profile</a></li>
+          <li><a href="#" class="mobile secondUserInfoControl userInfoItem">show menu</a></li>
+        </ul>
       </nav>
     </header>
     <section class="headlineSection">
       <h1>Utilnet store</h1>
-
+      <p>from the deepest sphere of knowledge</p>
     </section>
     <main>
       <section class="navSection">
-          <nav>
-            <a href="#">All</a>
+          <nav class="miniNav">
+            <a href="#" class="active">All</a>
             <a href="#"> My products</a>
             <a href="#">Popular</a>
           </nav>
       </section>
     <section class="All">
-      <h3>All Products</h3>
+      <h3 class="minSectionsTitles">All Products</h3>
       <ul class="allProductList" >
 
       </ul>
     </section>
     <section class="My books">
-      <h3>My Products</h3>
+      <h3 class="minSectionsTitles">My Products</h3>
       <ul class="myProductList">
 
       </ul>
     </section>
     <section class="Blog">
-
+      <h3 class="minSectionsTitles">Blog</h3>
     </section>
+    <div >
     <button class="nextButton">Next page <span></span></button>
+    <button class="goBack hide">Go Back <span></span></button>
+  </div>
   </main>
     <script src="bundle.js" ></script>
   </body>

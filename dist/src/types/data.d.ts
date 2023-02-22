@@ -15,3 +15,6 @@ export interface likeItem {
     likes: number;
     item_id: string;
 }
+export interface productObject {
+    [index: string]: product;
+}

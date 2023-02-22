@@ -1,3 +1,8 @@
+* {
+    
+    font-family: 'Source Serif Pro', serif;
+}
+
 body {
     background-image: url(../images/background-image.jpg);
     background-repeat: no-repeat;
@@ -12,7 +17,6 @@ main {
 .headNavigation a {
     color: #8798a4;
     text-decoration: none;
-    font-family: 'Source Serif Pro', serif;
 
 }
 
@@ -25,7 +29,8 @@ main {
 }
 
 .allProductList li img {
-    width: 51.733vw;
+    width: 100%;
+    height: 64.5vw;
 }
 
 
@@ -40,16 +45,193 @@ main {
 
 .showNavButton {
     background-image: url(../images/arrow-down-sign-to-navigate.png);
-    width: 10px;
+    width: 11vw;
+    height: 10vw;
+    background-color: transparent;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: none;
+    margin-bottom: 7px;
+    align-self: center;
+    color: white;
 }
 
 .hide {
     display: none;
 }
 
+.normalNav {
+    border-top: solid;
+    border-width: 0.4px;
+    padding: 10px;
+}
 
-@media only screen and (min-width:578px) {
+.userInfoList {
+    list-style:none;
+}
+
+.userInfoItem {
+    border-top: solid;
+    border-width: 0.5px;
+}
+
+.logoLink {
+    width: 100%;
+    height: 48vw;
+    font-size: 6vw;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardDataContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 6.5vw;
+}
+.logoLink span:first-child{
+    background-image: url(../images/menu-icon.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 19vw;
+    height: 16vw;
+}
+
+.logoLink span:last-child {
+    
+    color: white;
+}
+
+h1 {
+    color: #8798a4;
+    font-size: 8vw;
+}
+
+.headlineSection {
+    margin-top: 39vw;
+}
+
+.headlineSection p {
+    color: #8798a4;
+    font-size: 4vw;
+    text-decoration: underline;
+    color: #c2327f;
+}
+
+.miniNav {
+    display: flex;
+    justify-content: space-around;
+}
+
+.miniNav a:visited,
+.miniNav a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    font-size: 5vw;
+    flex-direction: column;
+    align-items: center;
+}
+
+.miniNav a:hover,
+.miniNav a.active {
+    color: #c2327f ;
+}
+
+.active::after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid #c2327f;
+    margin-top: 1.563vw;
+    width: 10.313vw;
+    box-shadow: -2px 0px 9px 0px #c2327f;
+  }
+.navSection {
+    margin-top: 29vw;
+}
+
+.allProductList {
+    display: grid;
+    padding: 0;
+    justify-items: center;
+    justify-content: center;
+}
+
+.allProductList li {
+    box-shadow: 0vw 6vw 20px 4px #e7e7e7;
+    width: 82vw;
+    margin-bottom: 16vw;
+}
+
+.ratingDataContainer {
+    display: flex;
+    width: 64vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.minSectionsTitles{
+    margin-top: 16vw;
+    text-align: center;
+    font-size: 8vw;
+    margin-bottom: 17vw;
+}
+
+.allProductList li hr {
+    width: 65vw;
+    margin: 0;
+    border-color: #f1f2f357;
+}
+
+.priceLike {
+    display: flex;
+    justify-content: space-between;
+    width: 83%;
+    padding: 10px;
+}
+
+.cardTitle {
+    margin-bottom: 0;
+    margin: 1px;
+    font-size: 6vw;
+}
+
+.priceP {
+    margin-bottom: 0;
+    margin-top: 1px;
+}
+
+.likesButton {
+    display: flex;
+    align-items: center;
+    background-image: url(../images/like.png);
+    border: none;
+    background-repeat: no-repeat;
+    background-size: 8vw 8vw;
+    background-color: transparent;
+    height: 8vw;
+    width: 10vw;
+}
+
+.likesAmount {
+    margin-top: 0;
+    align-self: flex-end;
+    margin-right: 14vw;
+}
+@media only screen and (min-width: 768px) {
+
     .desktopHide {
         display: none;
+    }
+
+    .mobile {
+        display: none;
+    }
+
+    .normalNav {
+        display: block;
     }
 }

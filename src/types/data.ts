@@ -13,3 +13,7 @@ export interface likeItem {
             item_id:string
 
 }
+
+export interface productObject {
+    [index:string]:product
+}
