@@ -5,7 +5,8 @@ export interface product {category:string,
     price:number,
     rating: {rate:number, count: number},
     title:string,
-    likes:number
+    likes:number,
+    myProduct?:boolean,
 }
 
 export interface likeItem {

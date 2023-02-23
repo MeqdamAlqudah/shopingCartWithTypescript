@@ -10,6 +10,7 @@ export interface product {
     };
     title: string;
     likes: number;
+    myProduct?: boolean;
 }
 export interface likeItem {
     likes: number;
