@@ -6,9 +6,14 @@ import { productObject } from './types/data';
 import { pages } from './types/pageType';
 
 export const allProducts = ()=>{
-        const nextPage = document.querySelector('.nextButton');
-        const backPage = document.querySelector('.goBack');
+        const paginationController = document.querySelector('.paginationController');
+        paginationController.innerHTML = `<button class="goBack hide">Go Back <hr></button>
+        <button class="nextButton">Next page <hr></button>`;
+        const nextPage:HTMLButtonElement = document.querySelector('.nextButton');
+        const backPage:HTMLButtonElement = document.querySelector('.goBack');
         const productList = document.querySelector('.allProductList');
+        nextPage.style.display = '';
+        backPage.style.display = '';
         // handle apis
         let start = 0;
         let end = 4;
@@ -16,7 +21,13 @@ export const allProducts = ()=>{
         getData((data)=>{
         getLikes(data,(items)=>{
             finalData = items;
-            const dataInLocalStorage = JSON.parse(localStorage.getItem("allProducts"))|| {};
+            const dataInLocalStorage = JSON.parse(sessionStorage.getItem("allProducts"))|| false;
+            if(!dataInLocalStorage){
+                for(let item in finalData){
+                        finalData[item]["myProduct"] = false;
+                    
+                }
+            }else {
             for(let item in finalData){
                 if(!dataInLocalStorage[finalData[item].id]){
                     finalData[item]["myProduct"] = false;
@@ -25,10 +36,12 @@ export const allProducts = ()=>{
                     finalData[item]["myProduct"] = true; 
                 }
             }
-            localStorage.setItem("allProducts",JSON.stringify(finalData));
+        }
+            sessionStorage.setItem("allProducts",JSON.stringify(finalData));
             domFunctios.addToDom(sliceObj(finalData,start,end),pages.all);
         })
         });
+        
         nextPage.addEventListener('click',()=>{
             start = end;
             end+=4;
@@ -39,7 +52,7 @@ export const allProducts = ()=>{
             }else {
                 start-=4;
                 end-=4;
-                console.log(start,end);
+                nextPage.classList.add('hideNextButton')
 
             }
            

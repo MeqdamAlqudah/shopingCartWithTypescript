@@ -76,7 +76,7 @@ const addToDom = (data:{
         secondDiv.appendChild(likesP)
         productList.appendChild(li);
         addToMyProductButton.addEventListener('click',()=>{
-            const allProducts = JSON.parse(localStorage.getItem('allProducts'));
+            const allProducts = JSON.parse(sessionStorage.getItem('allProducts'));
             allProducts[data[product].id].myProduct = !allProducts[data[product].id].myProduct;
             if( allProducts[data[product].id].myProduct){
                 addToMyProductButton.style.backgroundImage = 'url(../src/images/done.png)';   
@@ -86,7 +86,7 @@ const addToDom = (data:{
                     }
                 addToMyProductButton.style.backgroundImage = 'url(../src/images/addwhite.png)';
                 }
-            localStorage.setItem('allProducts',JSON.stringify(allProducts));
+            sessionStorage.setItem('allProducts',JSON.stringify(allProducts));
                 });
     }
 };

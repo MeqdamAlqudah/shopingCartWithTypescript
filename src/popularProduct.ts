@@ -6,9 +6,14 @@ import { productObject } from './types/data';
 import { pages } from './types/pageType';
 
 export const popularProduct = ()=>{
-    const nextPage = document.querySelector('.nextButton');
-    const backPage = document.querySelector('.goBack');
+    const paginationController = document.querySelector('.paginationController');
+        paginationController.innerHTML = `<button class="goBack hide">Go Back <hr></button>
+        <button class="nextButton">Next page <hr></button>`;
+    const nextPage:HTMLButtonElement = document.querySelector('.nextButton');
+    const backPage:HTMLButtonElement = document.querySelector('.goBack');
     const productList = document.querySelector('.allProductList');
+    nextPage.style.display = '';
+    backPage.style.display = '';
     // handle apis
     let start = 0;
     let end = 4;
