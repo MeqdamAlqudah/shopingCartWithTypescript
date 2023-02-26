@@ -305,6 +305,12 @@ h1 {
   width: 8vw;
 }
 
+#searchInputContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
 .headhr {
   display: none;
 }
