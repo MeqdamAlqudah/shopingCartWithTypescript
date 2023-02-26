@@ -144,6 +144,7 @@ h1 {
 
 .miniNav {
   display: flex;
+  padding-top: 9vw;
   justify-content: space-around;
 }
 
@@ -309,6 +310,10 @@ h1 {
   display: flex;
   width: 100%;
   justify-content: center;
+}
+
+#searchInputContainer.hide {
+  display: none;
 }
 
 .headhr {
