@@ -57,14 +57,18 @@ export const navMenu = ()=>{
         }
         flag = !flag
     });
-
+    const profileFunction = ()=>{
+        controlUserInfoPage();
+    };
     // control user info menu 
-    
+    if(window.screen.width < 768){
     const profileMenuButton:HTMLButtonElement = document.querySelector(".userinfoControl");
-    profileMenuButton.addEventListener("click",()=>{
-            controlUserInfoPage();
-    });
-   
+    profileMenuButton.addEventListener("click",profileFunction);
+    }else{
+        const profileMenuButton:HTMLButtonElement = document.querySelector(".userinfoControl");
+         profileMenuButton.removeEventListener("click",profileFunction);
+    }
 }
+   
 
 

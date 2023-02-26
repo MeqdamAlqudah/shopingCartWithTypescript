@@ -16,7 +16,7 @@ export const popularProduct = ()=>{
     backPage.style.display = '';
     // handle apis
     let start = 0;
-    let end = 4;
+    let end = 6;
     let finalData:productObject = {};
 
     getData((data)=>{
@@ -32,29 +32,35 @@ export const popularProduct = ()=>{
     });
     nextPage.addEventListener('click',()=>{
         start = end;
-        end+=4;
+        end+=6;
         backPage.classList.remove('hideBackButton')
         if(start < Object.keys(finalData).length){
             productList.innerHTML = '';
             domFunctios.addToDom(sliceObj(finalData,start,end),pages.popularProduct);
         }else {
-            start-=4;
-            end-=4;
+            start-=6;
+            end-=6;
             nextPage.classList.add('hideNextButton');
 
+        }
+        if((start+6) > Object.keys(finalData).length){
+            nextPage.classList.add('hideNextButton');
         }
        
     });
     backPage.addEventListener('click',()=>{
-        start -=4;
-        end-=4;
-        nextPage.classList.remove('hideNextButton')
+        start -=6;
+        end-=6;
+        nextPage.classList.remove('hideNextButton');
         if(start >= 0){
             productList.innerHTML = ''
             domFunctios.addToDom(sliceObj(finalData,start,end),pages.popularProduct);
         }else {
-            start+=4;
-            end+=4;
+            start+=6;
+            end+=6;
+            backPage.classList.add('hideBackButton');
+        }
+        if((start-6) < 0){  
             backPage.classList.add('hideBackButton');
         }
 

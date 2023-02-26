@@ -14,41 +14,61 @@ export const myProductsControll = ()=>{
     const isEmpty = Object.keys(allProducts).length > 0 ?true:false ;
     // handle apis
     let start:number = isEmpty && 0;
-    let end = Object.keys(allProducts).length;
+    let end = 6;
     let finalData:productObject = filterObj(allProducts);
     const resultObj = sliceObj(finalData,start,end);
     if(isEmpty){
     domFunctios.addToDom(resultObj,pages.myProduct);
     nextPage.addEventListener('click',()=>{
-      start +=4;
-      end+=4;
-      backPage.classList.remove('hideNextButton')
+      start +=6;
+      end+=6;
+      backPage.classList.remove('hideBackButton')
       if(start < Object.keys(finalData).length){
           productList.innerHTML = ''
           domFunctios.addToDom(sliceObj(finalData,start,end),pages.myProduct);
       }else {
-          start-=4;
-          end-=4;
-          nextPage.classList.add('hideBackButton');
+          start-=6;
+          end-=6;
+          nextPage.classList.add('hideNextButton');
+      }
+      if((start+6) > Object.keys(finalData).length){
+          nextPage.classList.add('hideNextButton');
       }
 
      });
-    backPage.addEventListener('click',()=>{
-        start -=4;
-        end-=4;
+     if((start+6) > Object.keys(finalData).length){
+        nextPage.classList.add('hideNextButton');
+     }
+     backPage.addEventListener('click',()=>{
+        start -=6;
+        end-=6;
         nextPage.classList.remove('hideNextButton')
         if(start >= 0){
             productList.innerHTML = ''
             domFunctios.addToDom(sliceObj(finalData,start,end),pages.myProduct);
         }else {
-            start+=4;
-            end+=4;
+            start+=6;
+            end+=6;
             backPage.classList.add('hideBackButton');
         }
-
-    });
-    }
         
+        if((start-6) < 0){  
+            backPage.classList.add('hideBackButton');
+        }
+    });
+    if((start-6) < 0){  
+        backPage.classList.add('hideBackButton');
+    }
+    }
+    
+    const h4 = document.createElement('h4');
+    const myProducts = document.querySelector('.Myproducts');
+    if(Object.keys(finalData).length === 0 && !(document.querySelector('.Myproducts h4'))){
+        h4.textContent ="No Products selected yet"
+        myProducts.appendChild(h4)
+    }else if(document.querySelector('.Myproducts h4')) {
+        // myProducts.removeChild(h)
+    }   
 };
 
 

@@ -88,8 +88,9 @@ const addToDom = (data:{
                 }
             sessionStorage.setItem('allProducts',JSON.stringify(allProducts));
                 });
-    }
-};
+
+             }
+    };
 
 export default {
     addToDom

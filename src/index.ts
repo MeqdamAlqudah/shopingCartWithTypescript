@@ -9,10 +9,11 @@ import { productObject } from './types/data';
     const element = document.createElement('div');
     // define sections in variables 
     const allProduct = document.querySelector('.All');
+    const inputSearch = document.querySelector('.searchBar');
+    const navSection:HTMLTableSectionElement = document.querySelector('.navSection')
     const myProducts = document.querySelector('.Myproducts');
+    const logoLink = document.querySelector('.logoLink');
     const poularProducts = document.querySelector('.Popular');
-    const nextPage = document.querySelector('.nextButton');
-    const backPage = document.querySelector('.goBack');
     //select mini nav buttons 
     const allProductButton:HTMLAnchorElement = document.querySelector('.all');
     const myProductsButton:HTMLAnchorElement = document.querySelector('.myproducts');
@@ -21,68 +22,69 @@ import { productObject } from './types/data';
     navMenu();
     // handle paths
     if(window.location.hash === "" || window.location.hash === "#All"){
-      nextPage.replaceWith(nextPage.cloneNode(true));
-      backPage.replaceWith(backPage.cloneNode(true));
       allProducts();
       myProducts.classList.add('hide');
       allProduct.classList.remove('hide')
       poularProducts.classList.add('hide');
       myProductsButton.classList.remove('active');
+      inputSearch.classList.remove('hide');
+      navSection.style.display = "flex"
       allProductButton.classList.add('active');
       popularProductsButton.classList.remove('active');
     }else if(window.location.hash === "#Myproducts") {
-      nextPage.replaceWith(nextPage.cloneNode(true));
-      backPage.replaceWith(backPage.cloneNode(true));
+      inputSearch.classList.add('hide');
       myProductsControll();
       myProducts.classList.remove('hide');
-      allProduct.classList.add('hide')
+      allProduct.classList.add('hide');
       poularProducts.classList.add('hide');
       myProductsButton.classList.add('active');
+      navSection.style.display = "block"
       allProductButton.classList.remove('active');
       popularProductsButton.classList.remove('active');
     }else if(window.location.hash === "#Popular"){
-      nextPage.replaceWith(nextPage.cloneNode(true));
-      backPage.replaceWith(backPage.cloneNode(true));
+      inputSearch.classList.add('hide');
       popularProduct();
       myProducts.classList.add('hide');
+      navSection.style.display = "block"
       allProduct.classList.add('hide')
       poularProducts.classList.remove('hide');
       myProductsButton.classList.remove('active');
       allProductButton.classList.remove('active');
       popularProductsButton.classList.add('active');
     }
-   
-    // navigations events 
-    allProductButton.addEventListener('click',()=>{
-      nextPage.replaceWith(nextPage.cloneNode(true));
-      backPage.replaceWith(backPage.cloneNode(true));
+    const allProductFunction = ()=>{
       allProducts();
+      inputSearch.classList.remove('hide');
       myProducts.classList.add('hide');
+      navSection.style.display = "flex"
       allProduct.classList.remove('hide')
       poularProducts.classList.add('hide');
       myProductsButton.classList.remove('active');
       allProductButton.classList.add('active');
       popularProductsButton.classList.remove('active');
-    })
+    }
+    // navigations events 
+    allProductButton.addEventListener('click',allProductFunction)
     myProductsButton.addEventListener('click',()=>{
-      nextPage.replaceWith(nextPage.cloneNode(true));
-      backPage.replaceWith(backPage.cloneNode(true));
       myProductsControll();
       myProducts.classList.remove('hide');
+      navSection.style.display = "block"
       allProduct.classList.add('hide')
       poularProducts.classList.add('hide');
       myProductsButton.classList.add('active');
       allProductButton.classList.remove('active');
+      inputSearch.classList.add('hide');
       popularProductsButton.classList.remove('active');
 
     })
+    logoLink.addEventListener('click',allProductFunction)
     popularProductsButton.addEventListener('click',()=>{
-      nextPage.replaceWith(nextPage.cloneNode(true));
-      backPage.replaceWith(backPage.cloneNode(true));
       popularProduct();
       myProducts.classList.add('hide');
+      navSection.style.display = "block"
       allProduct.classList.add('hide')
       poularProducts.classList.remove('hide');
+      inputSearch.classList.add('hide');
       myProductsButton.classList.remove('active');
       allProductButton.classList.remove('active');
       popularProductsButton.classList.add('active');

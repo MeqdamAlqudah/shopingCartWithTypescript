@@ -14,18 +14,19 @@ export const allProducts = ()=>{
         const productList = document.querySelector('.allProductList');
         nextPage.style.display = '';
         backPage.style.display = '';
+       
         // handle apis
         let start = 0;
-        let end = 4;
+        let end = 6;
         let finalData:productObject;
         getData((data)=>{
         getLikes(data,(items)=>{
-            finalData = items;
+            finalData = items
+
             const dataInLocalStorage = JSON.parse(sessionStorage.getItem("allProducts"))|| false;
             if(!dataInLocalStorage){
                 for(let item in finalData){
                         finalData[item]["myProduct"] = false;
-                    
                 }
             }else {
             for(let item in finalData){
@@ -41,19 +42,39 @@ export const allProducts = ()=>{
             domFunctios.addToDom(sliceObj(finalData,start,end),pages.all);
         })
         });
-        
-        nextPage.addEventListener('click',()=>{
+         /// handle search bar 
+         const searchBar:HTMLInputElement = document.querySelector(".searchBar");
+         const searchHandler = (event:Event)=>{
+            const input= event.target as HTMLInputElement;
+            const result:productObject = {};
+            for(let item in finalData){
+                if(finalData[item].title.includes(input.value)){
+                    result[item] = finalData[item];
+                }
+            }
+            domFunctios.addToDom(sliceObj(result,start,end),pages.all);
+            searchBar.removeEventListener('click',searchHandler);
+            searchBar.value = "";
+            searchBar.addEventListener('click',searchHandler)
+           };
+           
+         searchBar.removeEventListener('click',searchHandler);
+         searchBar.addEventListener('change',searchHandler)   
+         nextPage.addEventListener('click',()=>{
             start = end;
-            end+=4;
+            end+=6;
             backPage.classList.remove('hideBackButton')
             if(start < Object.keys(finalData).length){
                 productList.innerHTML = '';
                 domFunctios.addToDom(sliceObj(finalData,start,end),pages.all);
             }else {
-                start-=4;
-                end-=4;
+                start-=6;
+                end-=6;
                 nextPage.classList.add('hideNextButton')
 
+            }
+            if((start+4) >= Object.keys(finalData).length){
+                nextPage.classList.add('hideNextButton');
             }
            
         });
@@ -69,8 +90,10 @@ export const allProducts = ()=>{
                 end+=4;
                 backPage.classList.add('hideBackButton');
             }
-
+            if((start-4) < 0){  
+                backPage.classList.add('hideBackButton');
+            }
         });
- 
+       
 };
 
