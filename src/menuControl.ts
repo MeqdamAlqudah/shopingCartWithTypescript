@@ -25,7 +25,7 @@ const controlUserInfoPage = ()=>{
 
 export const navMenu = ()=>{
     // control all mobile menu
-    let flag:boolean = true;
+    let flag = true;
     const menuButton:HTMLButtonElement = document.querySelector(".showNavButton");
     const menu:NodeListOf<HTMLAnchorElement> = document.querySelectorAll(".navLink");
     const userInfoList:HTMLUListElement = document.querySelector(".userInfoList");

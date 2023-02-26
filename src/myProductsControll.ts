@@ -15,7 +15,7 @@ export const myProductsControll = ()=>{
     // handle apis
     let start:number = isEmpty && 0;
     let end = 6;
-    let finalData:productObject = filterObj(allProducts);
+    const finalData:productObject = filterObj(allProducts);
     const resultObj = sliceObj(finalData,start,end);
     if(isEmpty){
     domFunctios.addToDom(resultObj,pages.myProduct);
@@ -61,14 +61,6 @@ export const myProductsControll = ()=>{
     }
     }
     
-    const h4 = document.createElement('h4');
-    const myProducts = document.querySelector('.Myproducts');
-    if(Object.keys(finalData).length === 0 && !(document.querySelector('.Myproducts h4'))){
-        h4.textContent ="No Products selected yet"
-        myProducts.appendChild(h4)
-    }else if(document.querySelector('.Myproducts h4')) {
-        // myProducts.removeChild(h)
-    }   
 };
 
 

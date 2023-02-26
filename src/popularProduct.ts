@@ -17,11 +17,11 @@ export const popularProduct = ()=>{
     // handle apis
     let start = 0;
     let end = 6;
-    let finalData:productObject = {};
+    const finalData:productObject = {};
 
     getData((data)=>{
     getLikes(data,(items)=>{
-    for(let item in items){
+    for(const item in items){
         if(items[item].rating.rate > 4){
             finalData[item] = items[item];
         }

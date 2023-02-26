@@ -6,6 +6,8 @@ import { productObject } from './types/data';
 import { pages } from './types/pageType';
 
 export const allProducts = ()=>{
+        const inputContainer = document.getElementById('searchInputContainer');
+        inputContainer.innerHTML = `<input type="search" placeholder="search..." id="searchBar">`;
         const paginationController = document.querySelector('.paginationController');
         paginationController.innerHTML = `<button class="goBack hide">Go Back <hr></button>
         <button class="nextButton">Next page <hr></button>`;
@@ -25,11 +27,11 @@ export const allProducts = ()=>{
 
             const dataInLocalStorage = JSON.parse(sessionStorage.getItem("allProducts"))|| false;
             if(!dataInLocalStorage){
-                for(let item in finalData){
+                for(const item in finalData){
                         finalData[item]["myProduct"] = false;
                 }
             }else {
-            for(let item in finalData){
+            for(const item in finalData){
                 if(!dataInLocalStorage[finalData[item].id]){
                     finalData[item]["myProduct"] = false;
                 }
@@ -43,23 +45,21 @@ export const allProducts = ()=>{
         })
         });
          /// handle search bar 
-         const searchBar:HTMLInputElement = document.querySelector(".searchBar");
+         const searchBar:HTMLInputElement = document.getElementById("searchBar")as HTMLInputElement;
          const searchHandler = (event:Event)=>{
             const input= event.target as HTMLInputElement;
             const result:productObject = {};
-            for(let item in finalData){
+            for(const item in finalData){
                 if(finalData[item].title.includes(input.value)){
                     result[item] = finalData[item];
                 }
             }
             domFunctios.addToDom(sliceObj(result,start,end),pages.all);
-            searchBar.removeEventListener('click',searchHandler);
             searchBar.value = "";
-            searchBar.addEventListener('click',searchHandler)
            };
            
          searchBar.removeEventListener('click',searchHandler);
-         searchBar.addEventListener('change',searchHandler)   
+         searchBar.addEventListener('change',searchHandler);
          nextPage.addEventListener('click',()=>{
             start = end;
             end+=6;

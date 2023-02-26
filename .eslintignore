@@ -1,0 +1,8 @@
+webpack.config.js
+**/*.js"
+**/dist/**.js
+custom.d.ts
+webpack.config.d.ts 
+likesurl.ts 
+.eslintrc.cjs
+webpack.config.d.ts

@@ -9,7 +9,7 @@ import { productObject } from './types/data';
     const element = document.createElement('div');
     // define sections in variables 
     const allProduct = document.querySelector('.All');
-    const inputSearch = document.querySelector('.searchBar');
+    const inputSearch =  document.getElementById('searchInputContainer');
     const navSection:HTMLTableSectionElement = document.querySelector('.navSection')
     const myProducts = document.querySelector('.Myproducts');
     const logoLink = document.querySelector('.logoLink');
