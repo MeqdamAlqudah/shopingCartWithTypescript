@@ -21,9 +21,10 @@ export const popularProduct = ()=>{
 
     getData((data)=>{
     getLikes(data,(items)=>{
-    for(const item in items){
-        if(items[item].rating.rate > 4){
-            finalData[item] = items[item];
+        const itemsKeys = Object.keys(items);
+    for(let item =0;item < itemsKeys.length ; item+=1){
+        if(items[itemsKeys[item]].rating.rate > 4){
+            finalData[itemsKeys[item]] = items[itemsKeys[item]];
         }
     }
     

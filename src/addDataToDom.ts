@@ -14,7 +14,8 @@ const addToDom = (data:{
         productList= document.querySelector(".popularProductsList");
     }
     productList.innerHTML = '';
-    for(const product  in data){
+    const productDataKeys:string[] = Object.keys(data);
+    for(let product = 0 ;product <productDataKeys.length;product+=1){
         const li = document.createElement("li");
         const img = document.createElement("img");
         const hx  = document.createElement("h3");
@@ -29,16 +30,16 @@ const addToDom = (data:{
         const priceLikeDiv = document.createElement('div');
         const addToMyProductButton = document.createElement('button');
         // manage elements text content
-        secondP.textContent = `rate: ${data[product].rating.rate}`;
-        p.textContent = `${data[product].rating.count} reviews`;
-        secondP.textContent = `rate: ${data[product].rating.rate}`;
-        p.textContent = `${data[product].rating.count} reviews`;
-        img.src = data[product].image;
+        secondP.textContent = `rate: ${data[productDataKeys[product]].rating.rate}`;
+        p.textContent = `${data[productDataKeys[product]].rating.count} reviews`;
+        secondP.textContent = `rate: ${data[productDataKeys[product]].rating.rate}`;
+        p.textContent = `${data[productDataKeys[product]].rating.count} reviews`;
+        img.src = data[productDataKeys[product]].image;
         priceLikeDiv.classList.add("priceLike");
-        hx.textContent = `${data[product].title}`;
+        hx.textContent = `${data[productDataKeys[product]].title}`;
         secondDiv.classList.add("cardDataContainer");
-        img.alt = `${data[product].title}`;
-        if(data[product].myProduct){
+        img.alt = `${data[productDataKeys[product]].title}`;
+        if(data[productDataKeys[product]].myProduct){
         addToMyProductButton.style.backgroundImage = 'url(../src/images/done.png)';   
         }else{
         addToMyProductButton.style.backgroundImage = 'url(../src/images/addwhite.png)';
@@ -47,11 +48,11 @@ const addToDom = (data:{
         div.classList.add("ratingDataContainer");
         hx.classList.add("cardTitle");
         priceP.classList.add("priceP");
-        likesP.textContent = `${data[product].likes}`
+        likesP.textContent = `${data[productDataKeys[product]].likes}`
         likesButton.addEventListener("click",()=>{
             const span = Number(likesP.lastChild.textContent);
             generateLikes({
-                item_id:data[product].id
+                item_id:data[productDataKeys[product]].id
             })
             likesButton.style.backgroundImage = 'url(../src/images/likeDark.png)';  
             setTimeout(()=>{
@@ -62,7 +63,7 @@ const addToDom = (data:{
         
         likesButton.classList.add('likesButton');
         likesP.classList.add("likesAmount")
-        priceP.textContent = `${data[product].price}$`
+        priceP.textContent = `${data[productDataKeys[product]].price}$`
         div.appendChild(p);
         div.appendChild(secondP);
         li.appendChild(img);
@@ -78,8 +79,8 @@ const addToDom = (data:{
         productList.appendChild(li);
         addToMyProductButton.addEventListener('click',()=>{
             const allProducts = JSON.parse(sessionStorage.getItem('allProducts'));
-            allProducts[data[product].id].myProduct = !allProducts[data[product].id].myProduct;
-            if( allProducts[data[product].id].myProduct){
+            allProducts[data[productDataKeys[product]].id].myProduct = !allProducts[data[productDataKeys[product]].id].myProduct;
+            if( allProducts[data[productDataKeys[product]].id].myProduct){
                 addToMyProductButton.style.backgroundImage = 'url(../src/images/done.png)';   
                 }else{
                     if(pageType === pages.myProduct){

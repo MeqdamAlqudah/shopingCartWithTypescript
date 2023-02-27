@@ -26,17 +26,18 @@ export const allProducts = ()=>{
             finalData = items
 
             const dataInLocalStorage = JSON.parse(sessionStorage.getItem("allProducts"))|| false;
+            const finalDataKeys = Object.keys(finalData);
             if(!dataInLocalStorage){
-                for(const item in finalData){
-                        finalData[item]["myProduct"] = false;
+                for(let item = 0;item <finalDataKeys.length; item+=1){
+                        finalData[finalDataKeys[item]]["myProduct"] = false;
                 }
             }else {
-            for(const item in finalData){
-                if(!dataInLocalStorage[finalData[item].id]){
-                    finalData[item]["myProduct"] = false;
+            for(let item = 0;item <finalDataKeys.length; item+=1){
+                if(!dataInLocalStorage[ finalData[finalDataKeys[item]].id]){
+                    finalData[finalDataKeys[item]]["myProduct"] = false;
                 }
-                if(dataInLocalStorage[finalData[item].id].myProduct){
-                    finalData[item]["myProduct"] = true; 
+                if(dataInLocalStorage[finalData[finalDataKeys[item]].id].myProduct){
+                    finalData[finalDataKeys[item]]["myProduct"] = true; 
                 }
             }
         }
@@ -52,9 +53,10 @@ export const allProducts = ()=>{
          const searchHandler = (event:Event)=>{
             const input= event.target as HTMLInputElement;
             const result:productObject = {};
-            for(const item in finalData){
-                if(finalData[item].title.includes(input.value)){
-                    result[item] = finalData[item];
+            const finalDataKeys = Object.keys(finalData);
+            for(let item = 0;item <finalDataKeys.length; item+=1){
+                if(  finalData[finalDataKeys[item]].title.includes(input.value)){
+                    result[finalDataKeys[item]] =  finalData[finalDataKeys[item]];
                 }
             }
             domFunctios.addToDom(sliceObj(result,start,end),pages.all);
