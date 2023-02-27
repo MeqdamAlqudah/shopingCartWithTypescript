@@ -1,4 +1,4 @@
-import { product } from "./types/data";
+import { product } from './types/data';
 declare const _default: {
     addToDom: (data: {
         [index: string]: product;

@@ -5,66 +5,62 @@ import { sliceObj } from '.';
 import { productObject } from './types/data';
 import { pages } from './types/pageType';
 
-export const popularProduct = ()=>{
-    const paginationController = document.querySelector('.paginationController');
-        paginationController.innerHTML = `<button class="goBack hide">Go Back <hr></button>
+export const popularProduct = () => {
+  const paginationController = document.querySelector('.paginationController');
+  paginationController.innerHTML = `<button class="goBack hide">Go Back <hr></button>
         <button class="nextButton">Next page <hr></button>`;
-    const nextPage:HTMLButtonElement = document.querySelector('.nextButton');
-    const backPage:HTMLButtonElement = document.querySelector('.goBack');
-    const productList = document.querySelector('.allProductList');
-    nextPage.style.display = '';
-    backPage.style.display = '';
-    // handle apis
-    let start = 0;
-    let end = 6;
-    const finalData:productObject = {};
+  const nextPage:HTMLButtonElement = document.querySelector('.nextButton');
+  const backPage:HTMLButtonElement = document.querySelector('.goBack');
+  const productList = document.querySelector('.allProductList');
+  nextPage.style.display = '';
+  backPage.style.display = '';
+  // handle apis
+  let start = 0;
+  let end = 6;
+  const finalData:productObject = {};
 
-    getData((data)=>{
-    getLikes(data,(items)=>{
-        const itemsKeys = Object.keys(items);
-    for(let item =0;item < itemsKeys.length ; item+=1){
-        if(items[itemsKeys[item]].rating.rate > 4){
-            finalData[itemsKeys[item]] = items[itemsKeys[item]];
+  getData((data) => {
+    getLikes(data, (items) => {
+      const itemsKeys = Object.keys(items);
+      for (let item = 0; item < itemsKeys.length; item += 1) {
+        if (items[itemsKeys[item]].rating.rate > 4) {
+          finalData[itemsKeys[item]] = items[itemsKeys[item]];
         }
+      }
+
+      domFunctios.addToDom(sliceObj(finalData, start, end), pages.PopularProduct);
+    });
+  });
+  nextPage.addEventListener('click', () => {
+    start = end;
+    end += 6;
+    backPage.classList.remove('hideBackButton');
+    if (start < Object.keys(finalData).length) {
+      productList.innerHTML = '';
+      domFunctios.addToDom(sliceObj(finalData, start, end), pages.PopularProduct);
+    } else {
+      start -= 6;
+      end -= 6;
+      nextPage.classList.add('hideNextButton');
     }
-    
-        domFunctios.addToDom(sliceObj(finalData,start,end),pages.popularProduct);
-    })
-    });
-    nextPage.addEventListener('click',()=>{
-        start = end;
-        end+=6;
-        backPage.classList.remove('hideBackButton')
-        if(start < Object.keys(finalData).length){
-            productList.innerHTML = '';
-            domFunctios.addToDom(sliceObj(finalData,start,end),pages.popularProduct);
-        }else {
-            start-=6;
-            end-=6;
-            nextPage.classList.add('hideNextButton');
-
-        }
-        if((start+6) > Object.keys(finalData).length){
-            nextPage.classList.add('hideNextButton');
-        }
-       
-    });
-    backPage.addEventListener('click',()=>{
-        start -=6;
-        end-=6;
-        nextPage.classList.remove('hideNextButton');
-        if(start >= 0){
-            productList.innerHTML = ''
-            domFunctios.addToDom(sliceObj(finalData,start,end),pages.popularProduct);
-        }else {
-            start+=6;
-            end+=6;
-            backPage.classList.add('hideBackButton');
-        }
-        if((start-6) < 0){  
-            backPage.classList.add('hideBackButton');
-        }
-
-    });
+    if ((start + 6) > Object.keys(finalData).length) {
+      nextPage.classList.add('hideNextButton');
+    }
+  });
+  backPage.addEventListener('click', () => {
+    start -= 6;
+    end -= 6;
+    nextPage.classList.remove('hideNextButton');
+    if (start >= 0) {
+      productList.innerHTML = '';
+      domFunctios.addToDom(sliceObj(finalData, start, end), pages.PopularProduct);
+    } else {
+      start += 6;
+      end += 6;
+      backPage.classList.add('hideBackButton');
+    }
+    if ((start - 6) < 0) {
+      backPage.classList.add('hideBackButton');
+    }
+  });
 };
-

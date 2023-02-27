@@ -1,5 +1,5 @@
 export declare enum pages {
-    all = 0,
-    myProduct = 1,
-    popularProduct = 2
+    All = 0,
+    MyProduct = 1,
+    PopularProduct = 2
 }

@@ -1,5 +1,5 @@
 export enum pages {
-    all,
-    myProduct,
-    popularProduct
+    All,
+    MyProduct,
+    PopularProduct
 }
