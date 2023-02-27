@@ -44,6 +44,9 @@ export const allProducts = ()=>{
             domFunctios.addToDom(sliceObj(finalData,start,end),pages.all);
         })
         });
+        if((start-4) < 0){  
+            backPage.classList.add('hideBackButton');
+        }
          /// handle search bar 
          const searchBar:HTMLInputElement = document.getElementById("searchBar")as HTMLInputElement;
          const searchHandler = (event:Event)=>{

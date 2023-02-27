@@ -37,6 +37,7 @@ const addToDom = (data:{
         priceLikeDiv.classList.add("priceLike");
         hx.textContent = `${data[product].title}`;
         secondDiv.classList.add("cardDataContainer");
+        img.alt = `${data[product].title}`;
         if(data[product].myProduct){
         addToMyProductButton.style.backgroundImage = 'url(../src/images/done.png)';   
         }else{

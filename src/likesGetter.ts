@@ -6,9 +6,9 @@ const getLikesData =  async () =>{
     const data = await res.json()
     return data
 }
-export const getLikes =  (productData:product[],callfn:(result:{
+export const getLikes =  (productData:product[] ,callfn:(result:{
     [index:string]:product
-})=>void)=>{
+    })=>void)=>{
     const finalData= getLikesData();
     
     finalData.then((items:{item_id:number,likes:number}[] )=>{

@@ -28,7 +28,7 @@ import { productObject } from './types/data';
       poularProducts.classList.add('hide');
       myProductsButton.classList.remove('active');
       inputSearch.classList.remove('hide');
-      navSection.style.display = "flex"
+      navSection.style.display = "flex";
       allProductButton.classList.add('active');
       popularProductsButton.classList.remove('active');
     }else if(window.location.hash === "#Myproducts") {

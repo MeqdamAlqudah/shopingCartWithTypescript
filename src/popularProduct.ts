@@ -65,6 +65,5 @@ export const popularProduct = ()=>{
         }
 
     });
- 
 };
 
