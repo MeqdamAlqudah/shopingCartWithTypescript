@@ -12,13 +12,34 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@hint/utils-dom": "^2.2.2",
     "@types/lodash": "^4.14.191",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "css-loader": "^6.7.3",
+    "eslint": "^8.35.0",
+    "hint": "^7.1.3",
+    "style-loader": "^3.3.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.21.0",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.5",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
+    "@types/global-npm": "^0.4.1",
     "lodash": "^4.17.21"
-  }
+  },
+  "main": "webpack.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeqdamAlqudah/shopingCartWithTypescript.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MeqdamAlqudah/shopingCartWithTypescript/issues"
+  },
+  "homepage": "https://github.com/MeqdamAlqudah/shopingCartWithTypescript#readme"
 }

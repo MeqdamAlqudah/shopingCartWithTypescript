@@ -1,0 +1,332 @@
+* {
+  font-family: 'Source Serif Pro', serif;
+}
+
+body {
+  background-image: url(../images/background-image.png);
+  background-repeat: no-repeat;
+  background-size: 136vw 98vw;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+main {
+  background-color: white;
+  padding-bottom: 1vw;
+}
+
+.active {
+  color: white;
+}
+
+.allProductList,
+.myProductList,
+.popularProductsList {
+  list-style: none;
+  display: grid;
+  padding: 0;
+  justify-items: center;
+  justify-content: center;
+}
+
+.allProductList li img,
+.myProductList li img,
+.popularProductsList li img {
+  width: 100%;
+  height: 64.5vw;
+}
+
+.headNavigation {
+  display: flex;
+  flex-direction: column;
+}
+
+.headNavigation a {
+  font-size: 11.938vw;
+  color: #8798a4;
+  text-decoration: none;
+}
+
+.showNavButton {
+  background-image: url(../images/arrow-down-sign-to-navigate.png);
+  width: 11vw;
+  height: 10vw;
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+  margin-bottom: 7px;
+  align-self: center;
+  color: white;
+}
+
+.hide {
+  display: none;
+}
+
+.normalNav {
+  border-top: solid;
+  border-width: 0.4px;
+  padding: 10px;
+}
+
+.userInfoList {
+  list-style: none;
+}
+
+.userInfoItem {
+  border-top: solid;
+  border-width: 0.5px;
+}
+
+.logoLink {
+  width: 100%;
+  height: 48vw;
+  font-size: 6vw;
+  font-weight: 700;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+}
+
+h4 {
+  align-self: center;
+  grid-row: 1;
+  font-size: 6vw;
+}
+
+.cardDataContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 6.5vw;
+}
+
+.logoLink span:first-child {
+  background-image: url(../images/menu-icon.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 19vw;
+  height: 16vw;
+}
+
+.logoLink span:last-child {
+  color: white;
+}
+
+h1 {
+  color: #8798a4;
+  font-size: 8vw;
+}
+
+.headlineSection {
+  margin-top: 39vw;
+  margin-left: 2vw;
+}
+
+.headlineSection p {
+  font-size: 4vw;
+  text-decoration: underline;
+  color: #c2327f;
+}
+
+.miniNav {
+  display: flex;
+  padding-top: 9vw;
+  justify-content: space-around;
+}
+
+.miniNav a,
+.miniNav a:visited {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  font-size: 5vw;
+  flex-direction: column;
+  align-items: center;
+}
+
+.miniNav a:hover,
+.miniNav a.active {
+  color: #c2327f;
+}
+
+.active::after {
+  content: "";
+  display: block;
+  border-bottom: 1px solid #c2327f;
+  margin-top: 1.563vw;
+  width: 10.313vw;
+  box-shadow: -2px 0 9px 0 #c2327f;
+}
+
+.navSection {
+  margin-top: 29vw;
+  flex-direction: column-reverse;
+}
+
+.allProductList li,
+.myProductList li,
+.popularProductsList li {
+  box-shadow: 0 6vw 20px 4px #e7e7e7;
+  width: 82vw;
+  margin-bottom: 16vw;
+}
+
+.ratingDataContainer {
+  display: flex;
+  width: 64vw;
+  justify-content: space-between;
+}
+
+.minSectionsTitles {
+  margin-top: 16vw;
+  text-align: center;
+  font-size: 8vw;
+  margin-bottom: 17vw;
+}
+
+.paginationController hr {
+  width: 22px;
+  margin-left: 9px;
+  border-color: #c2327f;
+  border-width: 0.25px;
+}
+
+.allProductList li hr,
+.myProductList li hr,
+.popularProductsList li hr {
+  width: 65vw;
+  margin: 0;
+  border-color: #f1f2f357;
+}
+
+.priceLike {
+  display: flex;
+  justify-content: space-between;
+  width: 83%;
+  padding: 10px;
+}
+
+.cardTitle {
+  margin: 1px;
+  margin-bottom: 0;
+  font-size: 6vw;
+}
+
+#purchaseContainer {
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  margin-bottom: 8vw;
+}
+
+#purchaseContainer button {
+  background: transparent;
+  height: 5vw;
+  border: solid 0.5px #c2327f;
+}
+
+#purchaseContainer button:hover {
+  background-color: #c2327f;
+  color: white;
+}
+
+.priceP {
+  margin-bottom: 0;
+  margin-top: 1px;
+}
+
+.likesButton {
+  display: flex;
+  align-items: center;
+  background-image: url(../images/like.png);
+  border: none;
+  background-repeat: no-repeat;
+  background-size: 8vw 8vw;
+  background-color: transparent;
+  height: 8vw;
+  cursor: pointer;
+  width: 10vw;
+}
+
+.likesAmount {
+  margin-top: 0;
+  align-self: flex-end;
+  margin-right: 14vw;
+  font-size: 5vw;
+}
+
+.paginationController {
+  display: flex;
+  margin-bottom: 9vw;
+  justify-content: space-around;
+}
+
+.nextButton,
+.goBack {
+  display: flex;
+  width: 113px;
+  font-weight: 800;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.goBack {
+  flex-direction: row-reverse;
+}
+
+.paginationController button.hideBackButton {
+  display: none;
+}
+
+.paginationController button.hideNextButton {
+  display: none;
+}
+
+.addToMyProducts {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  background-size: cover;
+  width: 8vw;
+}
+
+#searchInputContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+#searchInputContainer.hide {
+  display: none;
+}
+
+.headhr {
+  display: none;
+}
+
+#searchBar {
+  margin-top: 16vw;
+  width: 62vw;
+  height: 11vw;
+  align-self: center;
+  border: solid 0.25px #c5c5c5;
+  padding-left: 3vw;
+  font-size: 4vw;
+}
